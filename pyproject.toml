@@ -1,0 +1,54 @@
+[build-system]
+requires = [
+    "hatchling",
+    "hatch-vcs",
+]
+build-backend = "hatchling.build"
+
+# Metadata ====================================================================
+[project]
+name = "real-time-tomo-prad"
+dynamic = ["version"]
+readme = "README.rst"
+requires-python = ">= 3.10, < 3.13"
+license = "MIT"
+authors = [
+    { name = "Daniele Hamm", email = "daniele.hamm@epfl.ch" },
+]
+classifiers = [
+    "Framework :: Pycsou",
+    "Topic :: Scientific/Engineering",
+    "Intended Audience :: Science/Research",
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+urls.download = "https://github.com/dhamm97/real-time-tomo-prad"
+dependencies = [
+    "pyxu @ git+https://github.com/pyxu-org/pyxu.git@v2.0.2",
+    "pyxu-diffops @ git+https://github.com/dhamm97/pyxu-diffops.git",
+]
+
+
+# Optional dependencies =======================================================
+[project.optional-dependencies]
+dev = [ "pyxu[dev]", ]
+complete-gpu11 = [ "pyxu[complete11]", ]
+complete-gpu12 = [ "pyxu[complete12]", ]
+
+# Get version info from Git ===================================================
+[tool.hatch.version]
+source = "vcs"
+
+## sdist/wheel config ==========================================================
+[tool.hatch.build]
+include = [
+    "/src",
+]
+
+# Allow direct references in dependencies =====================================
+[tool.hatch.metadata]
+allow-direct-references = true
