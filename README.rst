@@ -44,22 +44,6 @@ Then, clone the repo and install the necessary dependencies by:
    git clone https://github.com/dhamm97/real-time-tomo-prad.git
    pip install .
 
-
-Phantom generation
-----------------
-
-We provide the instructions necessary to generate the synthetic emission profiles used in this work: feel
-free to **reuse** them to validate your own tomographic reconstruction algorithms! ♻️
-
-To generate them, you can navigate to the folder ``src/results/dataset_generation`` and run
-
-.. code-block:: bash
-
-   python generate_sxr_phantoms.py
-
-The soft x-ray profiles will be generated and stored in the folder ``src/results/dataset_generation/sxr_samples``.
-
-
 Computational routines
 ----------------------
 
