@@ -5,8 +5,10 @@ Repository for real-time tomography-based radiated power estimation
 ----------------------------------------
 
 This repository provides open access to all the computational routines implemented by our paper
-"Real-time tomography-based Bayesian inference from TCV bolometry data". The paper was recently
-submitted for publication. In the meanwhile, the arXiv version of this paper
+"Real-time tomography-based Bayesian inference from TCV bolometry data", as well as the analyzed data.
+This is an integral part of our work, as we strongly believe in the importance of **reusability** and **reproducibility** in science. ♻️
+
+The paper was recently submitted for publication. In the meanwhile, the arXiv version of this paper
 can be found `here <https://arxiv.org/abs/2506.20232>`_ .
 
 The code here provided can be used to reproduce all the results presented in the paper.
@@ -14,8 +16,7 @@ The code here provided can be used to reproduce all the results presented in the
 In particular, we provide instructions for:
 
 * **Installation** ⚙️ : simple instructions to get started
-* **Phantom generation** 👻 : how to generate the synthetic emissivity profiles used to validate our algorithms
-* **Results generation** 📊 : scripts and Jupyter Notebooks allowing to reproduce analyses and plots
+* **Results generation** 📊 : scripts and Jupyter Notebooks allowing to reproduce all analyses and plots
 
 The Jupyter Notebooks allow to easily inspect and visualize how the results included in the paper were generated,
 even without needing to actually re-run them. 🔎
@@ -36,7 +37,7 @@ Create a dedicated Python environment, e.g., by
    conda activate rt-tomo-env
 
 
-Then, clone the repo and install the necessary dependencies:
+Then, clone the repo and install the necessary dependencies by:
 
 .. code-block:: bash
 
@@ -58,39 +59,58 @@ To generate them, you can navigate to the folder ``src/results/dataset_generatio
 
 The soft x-ray profiles will be generated and stored in the folder ``src/results/dataset_generation/sxr_samples``.
 
+
+Computational routines
+----------------------
+
+The folder ``src/routines`` contains all the code used in this project.
+
+* The subfolder ``src/routines/tomo_fusion`` contains all that's needed to define the Bayesian reconstruction models used in our work
+  (both for offline and real-time applications).
+
+* The file ``src/routines/rt_roi_prad.py`` contains all the routines implemented for real-time estimation of the radiated power.
+
+
+Data
+----
+
+The folder ``src/data`` contains information from the TCV discharges analyzed in this work. In particular, we include all the
+data necessary to reproduce the presented results.
+
 Results generation
 --------------
 
-Once you have generated the phantoms, we are ready to replicate the paper results.
+The folder ``src/results`` contains the obtained results, the scripts used to generate them, and notebooks to visualize them.
 
-* The notebook ``dataset_generation_plots.ipynb`` in folder ``src/results/dataset_generation`` shows the generation of the plots included in Section 5.1 of the paper.
+* The notebook ``bolometer_diagnostic.ipynb`` plots the configuration of the TCV bolometer diagnostic  (Figure 1 of the paper).
 
-* The notebook ``phantom_analysis_results.ipynb`` in folder ``src/results/phantom_anlaysis`` shows the generation of the plots included in Section 5.2 of the paper.
-  If you want to reproduce them, see the next bullet point.
+* The notebook ``fbt_vs_liuqe.ipynb`` compares the FBT vs LIUQE magnetic equilibria for shot #85270 (Figure 2 of the paper).
 
-* In ``src/results/phantom_analysis/uq_study_results``, the repo only contains the postprocessed aggregate results. If you want to fully reproduce
-  the analysis, you can run the python script ``uq_study.py``. Warning ⚠️ : running this script takes a long time. If you have access to a workstation
-  featuring multiple cores, run the ``.sh`` version of the script, splitting the computations among (in our case) 10 different cores, which will
-  reduce the computation time to a few hours.
+* The subfolder ``src/results/hyperparameter_study_results`` contains the code and phantoms 👻 used to tune the model hyperparameters.
+  The script ``generate_phantoms.py`` can be run to generate the SOLPS-inspired phantoms stored in the subfolder ``phantoms``.
+  The script ``hyperparameter_study.py`` can be run to reproduce the hyperparameter study results. Warning ⚠️ : running ``hyperparameter_study.py``` takes a long time.
+  If you have access to a workstation featuring multiple cores, run the ``.sh`` version of the script, splitting the computations among (in our case) 10
+  different cores, which will greatly reduce the computation time. The results (Figure 7 of the paper) can be inspected in the notebook ``hyperparameter_tuning.ipynb``,
+  and are stored in the subfolder ``phantom_analysis_results``.
 
-* In ``src/results/sparse_tomography_limits`` you will find the Jupyter Notebook allowing to reproduce the results from Section 5.3.
+* The subfolder ``src/results/campaign_analysis`` contains the results from the study conducted on 50 TCV shots from the 2025 TCV campaign.
+  The script ``campaign_analysis.py`` can be run to generate the results that can be found in the subfolder ``campaign_study_results``.
+  Warning ⚠️ : as discussed in the previous bullet point, you can run the ``.sh`` version of the script to split computations among multiple cores
+  (20 in our case). The notebook ``paper_results.ipynb`` allows inspection of the results, and contains the code and analyses used to
+  generate Figure 3, Figure 4, and Table 1 fro the paper.
 
-* In ``src/results/phantom_analysis/hyperparameter_tuning/prior_hyperparameters_tuning`` you will find the scripts necessary to reproduce the
-  results already findable in its subfolder ``tuning_data``. The included Jupyter Notebook reports the results included in Appendix C of the paper.
+Geometry
+--------
 
-* In ``src/results/phantom_analysis/hyperparameter_tuning/ula_hyperparameters_tuning`` you will find the script ``ula_iteration_number_tuning.py``,
-  which can be used to generate the data for Figure 8 in Appendix C. Warning ⚠️ : this script too takes a pretty long time, since it computes
-  :math:`10^7` MCMC iterations for 100 different phantoms. If you have access to a workstation featuring multiple cores, run the ``.sh`` version of the script.
-  Probably easier to simply check the provided Jupyter Notebook in this case.
+The folder ``src/tcv_geometry`` contains some basic information about the geometry of the TCV tokamak and of the bolometer diagnostic
+whose data we rely on in this work.
 
-
-Finally, the folder ``src/tomo_fusion`` contains the computational routines and helping tools implemented in our work.
 
 License
 -------
 
 Distributed under the terms of the `MIT`_ license,
-``pyxu-diffops`` is free and open source software
+this is free and open source software
 
 Issues
 ------

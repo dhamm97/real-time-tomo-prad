@@ -30,6 +30,24 @@ urls.download = "https://github.com/dhamm97/real-time-tomo-prad"
 dependencies = [
     "pyxu @ git+https://github.com/pyxu-org/pyxu.git@v2.0.2",
     "pyxu-diffops @ git+https://github.com/dhamm97/pyxu-diffops.git",
+    "scipy >= 1.11, < 2",
+    "matplotlib >= 3.7, < 4",
+    "shapely >= 2.0, < 3",
+    "raysect >= 0.8, < 1",
+    "trimesh >= 4.0, < 5",
+    "cherab >= 1.5, < 2",
+    "discretize >= 0.10, < 1",
+    "ipywidgets >= 8.0, < 9",
+    "moviepy >= 1.0.3, < 2",
+    "typing; python_version < '3.11'",
+    "scikit-image >= 0.22, < 0.27",
+
+    # Jupyter-related dependencies
+    "notebook >= 7, < 7.6",
+    "jupyterlab >= 4.3, < 5",
+    "ipykernel >= 6.27, < 7",
+    "nbformat >= 5.9, < 6",
+    "nbconvert >= 7.6, < 8",
 ]
 
 
