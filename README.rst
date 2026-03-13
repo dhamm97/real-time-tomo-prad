@@ -9,7 +9,7 @@ This repository provides open access to all the computational routines implement
 This is an integral part of our work, as we strongly believe in the importance of **reusability** and **reproducibility** in science. ♻️
 
 The paper was recently submitted for publication. In the meanwhile, the arXiv version of this paper
-can be found `here <https://arxiv.org/abs/2506.20232>`_ .
+can be found `here <https://arxiv.org/abs/2603.11856>`_ .
 
 The code here provided can be used to reproduce all the results presented in the paper.
 
@@ -104,4 +104,4 @@ Hopefully the provided instructions will be enough, but if you encounter any pro
 Cite us
 ------
 
-If any of this was useful for your own research, you can cite our `paper <https://arxiv.org/abs/2506.20232>`_ !
+If any of this was useful for your own research, you can cite our `paper <https://arxiv.org/abs/2603.11856>`_ !
